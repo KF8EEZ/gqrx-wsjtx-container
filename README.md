@@ -1,4 +1,4 @@
-this is meant to connect gqrx and wsjtx
+this is meant to connect gqrx and wsjtx each running in separate containers.
 
 
 ## GQRX docker
