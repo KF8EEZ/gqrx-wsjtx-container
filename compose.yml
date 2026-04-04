@@ -1,6 +1,6 @@
 
 services:
-  wjstx:
+  wsjtx:
     init: true
     environment:
       DISPLAY:
@@ -8,8 +8,11 @@ services:
     #build: 
     #  context: .
     #  dockerfile: Dockerfile
-    user: 0:0
-    image: ghcr.io/kf8eez/wsjtx:latest
+    #user: 0:0
+    #image: ghcr.io/kf8eez/wsjtx:latest
+    #image: wsjtx:newver
+    userns_mode: keep-id
+    image: ghcr.io/kf8eez/amd64/wsjtx:latest
     volumes:
       # passing through this file allows opening windows from the container in your host computer
       - "/tmp/.X11-unix:/tmp/.X11-unix:rw"
@@ -52,7 +55,8 @@ services:
     devices:
       - "/dev/dri:/dev/dri"
       #- "/dev/bus/usb/001/006" # this may change when you plug/unplug device
-      - "/dev/bus/usb/002/002" # this may change when you plug/unplug device
+      #- "/dev/bus/usb/002/004" # this may change when you plug/unplug device
+      - "/dev/bus/usb/004/003" # this may change when you plug/unplug device
     network_mode: "host"
     command:
       - /bin/bash
