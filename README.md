@@ -38,8 +38,11 @@ For WSPR tuning on 20 meters, tune to 14_095_600 Hz. The LimeSDR has a large LO 
 
 ### Potential errors
 
-- USB device not present - check with lsusb
-- Popup that says pulse audio timeout.
+- USB device not present
+  - check with lsusb
+- Popup that says pulse audio timeout 
+  - rebooting fixed this
+  - should be a better solution
 
 ## WSJTX container
 
