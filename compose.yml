@@ -5,12 +5,7 @@ services:
     environment:
       DISPLAY:
       PULSE_SERVER: /run/pulse/native # this must match below
-    #build: 
-    #  context: .
-    #  dockerfile: Dockerfile
-    #user: 0:0
-    #image: ghcr.io/kf8eez/wsjtx:latest
-    #image: wsjtx:newver
+
     userns_mode: keep-id
     image: ghcr.io/kf8eez/amd64/wsjtx:latest
     volumes:
@@ -21,12 +16,14 @@ services:
       #- "$PWD/log:/root/.local/share"
       - "$PWD/config:/home/ubuntu/.config"
       - "$PWD/log:/home/ubuntu/.local/share"
-      # - "/run/user/1000/pulse:/run/pulse:ro" # this much match above
+      - "/run/user/1000/pulse:/run/pulse:ro" # this much match above
     network_mode: "host"
     devices:
       #- "/dev/ttyUSB0:/dev/ttyUSB0"
       #- "/dev/ttyUSB1:/dev/ttyUSB1"
       - "/dev/snd:/dev/snd"
+    group_add:
+      - audio
       
     privileged: true
     command:
@@ -59,7 +56,7 @@ services:
       - "/dev/dri:/dev/dri"
       #- "/dev/bus/usb/001/006" # this may change when you plug/unplug device
       #- "/dev/bus/usb/002/004" # this may change when you plug/unplug device
-      - "/dev/bus/usb/004/002" # this may change when you plug/unplug device
+      - "/dev/bus/usb/004/005" # this may change when you plug/unplug device
     network_mode: "host"
     command:
       - gqrx
