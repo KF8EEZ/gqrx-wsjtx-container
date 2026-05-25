@@ -1,4 +1,4 @@
-this is meant to connect gqrx and wsjtx each running in separate containers.
+This is meant to connect gqrx and wsjtx each running in separate containers, using podman as the containerization (originally used Docker).
 
 Each of these tools run X-Windows. You may need to run 
 ```bash
@@ -6,7 +6,7 @@ xhost +
 ```
 first to allow for the windows to show.
 
-## GQRX docker
+## GQRX container
 
 https://github.com/KF8EEZ/gqrx-docker
 
@@ -36,7 +36,12 @@ exit code: 125
 
 For WSPR tuning on 20 meters, tune to 14_095_600 Hz. The LimeSDR has a large LO bleed through at the center frequency, so set the hardware RF LO off WSPR center and tune the receiver around off the center frequency. the LNAW antenna should be selected.
 
-## WSJTX docker
+### Potential errors
+
+- USB device not present - check with lsusb
+- Popup that says pulse audio timeout.
+
+## WSJTX container
 
 https://github.com/KF8EEZ/wsjtx-docker
 
